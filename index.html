@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest AI Tools 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #ececec;
+            overflow-x: hidden;
+            cursor: none;
+            position: relative;
+        }
+
+        .circuit-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: #449670;
+            box-shadow: 0 0 10px #a0a0a0, 0 0 20px #00ff88;
+        }
+
+        .circuit-line.horizontal {
+            height: 2px;
+        }
+
+        .circuit-line.vertical {
+            width: 2px;
+        }
+
+        .signal {
+            position: absolute;
+            background: #00ffff;
+            box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+            border-radius: 50%;
+            animation: moveSignal linear infinite;
+        }
+
+        .signal.horizontal {
+            width: 20px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .signal.vertical {
+            width: 8px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        @keyframes moveSignal {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes moveSignalVertical {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes moveSignalHorizontal {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        .circuit-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #000000, 0 0 30px #00ff88;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .comet {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .comet-head {
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #ffffff 0%, #a8edea 50%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px #fff, 0 0 40px #a8edea, 0 0 60px #4a90e2;
+            position: fixed;
+            transform: translate(-8px, -8px);
+        }
+
+        .comet-tail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .tail-segment {
+            position: absolute;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9), rgba(168, 237, 234, 0.4), transparent);
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .intro-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .welcome-text {
+            flex: 1;
+            max-width: 500px;
+            animation: fadeInLeft 1s forwards 0.5s;
+            opacity: 0;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .welcome-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #a8edea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-text p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .earth-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .earth {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        .earth img {
+            width: 100%;
+            height: 100%;
+            animation: rotate 20s linear infinite;
+            filter: drop-shadow(0 0 60px rgba(100, 180, 255, 0.6));
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .main-content {
+            min-height: 100vh;
+            padding: 100px 8% 50px;
+            position: relative;
+            z-index: 2;
+            background: #000000;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #fffdfd, #c78317);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: sticky;
+            top: 20px;
+            z-index: 10;
+            padding: 20px 0;
+            background-color: rgba(255, 6, 6, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .tool-card {
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(199, 19, 19, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .tool-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(177, 47, 47, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tool-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .tool-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .tool-company {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .tool-description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .tool-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        /* Individual tool colors */
+        .tool-1 { background: linear-gradient(135deg, rgba(24, 243, 104, 0.25), rgba(255, 255, 255, 0.1)); border-color: rgba(12, 255, 101, 0.4); }
+        .tool-1 .tool-logo { background: #28c95d; }
+        
+        .tool-2 { background: linear-gradient(135deg, rgba(251, 146, 60, 0.25), rgba(251, 146, 60, 0.1)); border-color: rgba(251, 146, 60, 0.4); }
+        .tool-2 .tool-logo { background: #fb923c; }
+        
+        .tool-3 { background: linear-gradient(135deg, rgba(244, 114, 182, 0.25), rgba(244, 114, 182, 0.1)); border-color: rgba(244, 114, 182, 0.4); }
+        .tool-3 .tool-logo { background: #f472b6; }
+        
+        .tool-4 { background: linear-gradient(135deg, rgba(22, 43, 230, 0.25), rgba(12, 104, 216, 0.1)); border-color: rgba(96, 165, 250, 0.4); }
+        .tool-4 .tool-logo { background: #0bccda; }
+        
+        .tool-5 { background: linear-gradient(135deg, rgba(2, 236, 253, 0.356), rgba(134, 239, 172, 0.1)); border-color: rgba(134, 239, 172, 0.4); }
+        .tool-5 .tool-logo { background: #3f2fce; }
+        
+        .tool-6 { background: linear-gradient(135deg, rgba(190, 5, 5, 0.25), rgba(248, 113, 113, 0.1)); border-color: rgba(248, 113, 113, 0.4); }
+        .tool-6 .tool-logo { background: #f87171; }
+        
+        .tool-7 { background: linear-gradient(135deg, #4017f759, rgba(252, 165, 165, 0.1)); border-color: rgba(252, 165, 165, 0.4); }
+        .tool-7 .tool-logo { background: #e40636; }
+        
+        .tool-8 { background: linear-gradient(135deg, rgba(116, 76, 17, 0.25), rgba(167, 243, 208, 0.1)); border-color: rgba(167, 243, 208, 0.4); }
+        .tool-8 .tool-logo { background: #7a5825; }
+        
+        .tool-9 { background: linear-gradient(135deg, rgba(5, 133, 133, 0.336), rgba(251, 207, 232, 0.1)); border-color: rgba(251, 207, 232, 0.4); }
+        .tool-9 .tool-logo { background: #4a1c86; }
+        
+        .tool-10 { background: linear-gradient(135deg, rgba(74, 222, 128, 0.25), rgba(74, 222, 128, 0.1)); border-color: rgba(74, 222, 128, 0.4); }
+        .tool-10 .tool-logo { background: #4ade80; }
+        
+        .tool-11 { background: linear-gradient(135deg, rgba(147, 197, 253, 0.25), rgba(147, 197, 253, 0.1)); border-color: rgba(147, 197, 253, 0.4); }
+        .tool-11 .tool-logo { background: #93c5fd; }
+
+        @media (max-width: 768px) {
+            .intro-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 5%;
+            }
+            
+            .welcome-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .earth {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Circuit Background -->
+    <div class="circuit-background" id="circuitBg"></div>
+
+    <!-- Comet cursor -->
+    <div class="comet-head"></div>
+    <div class="comet-tail" id="cometTail"></div>
+
+    <!-- Intro Section -->
+    <div class="intro-section" id="introSection">
+        <div class="welcome-text">
+            <h1>Latest AI Tools to Boost Your Productivity!</h1>
+            <p>Know about the latest AI tools and understand what are they used for.</p>
+        </div>
+        <div class="earth-container">
+            <div class="earth" id="earthContainer">
+                <img src="earth.png" alt="Earth">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <h2 class="section-title">Trending AI Tools of 2025</h2>
+        <div class="tools-grid">
+            <!-- Tool 1 -->
+            <div class="tool-card tool-1">
+                <div class="tool-header">
+                    <div class="tool-logo">I</div>
+                    <div class="tool-info">
+                        <h3>ImageFX Pro</h3>
+                        <div class="tool-company">Google AI</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Advanced AI-powered image editing suite with real-time style transfer, object removal, and intelligent enhancement capabilities. Revolutionizes creative workflows with neural network precision.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Image Editing</span>
+                    <span class="tool-tag">AI Enhancement</span>
+                </div>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="tool-card tool-2">
+                <div class="tool-header">
+                    <div class="tool-logo">C</div>
+                    <div class="tool-info">
+                        <h3>CodeGen AI</h3>
+                        <div class="tool-company">Microsoft</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Next-generation code completion and generation tool that understands context across multiple files. Writes entire functions, debugs code, and suggests optimizations in real-time.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Development</span>
+                    <span class="tool-tag">Code Assistant</span>
+                </div>
+            </div>
+
+            <!-- Tool 3 -->
+            <div class="tool-card tool-3">
+                <div class="tool-header">
+                    <div class="tool-logo">V</div>
+                    <div class="tool-info">
+                        <h3>VoiceClone Studio</h3>
+                        <div class="tool-company">OpenAI</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Create hyper-realistic voice clones with just 30 seconds of audio. Perfect for content creators, audiobook narration, and multilingual dubbing with emotional expression control.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Voice AI</span>
+                    <span class="tool-tag">Audio</span>
+                </div>
+            </div>
+
+            <!-- Tool 4 -->
+            <div class="tool-card tool-4">
+                <div class="tool-header">
+                    <div class="tool-logo">C</div>
+                    <div class="tool-info">
+                        <h3>Claude Artifacts</h3>
+                        <div class="tool-company">Anthropic</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Interactive AI tool that generates complete applications, documents, and visualizations in real-time. Seamlessly creates websites, data visualizations, and interactive components.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Web Development</span>
+                    <span class="tool-tag">Content Creation</span>
+                </div>
+            </div>
+
+            <!-- Tool 5 -->
+            <div class="tool-card tool-5">
+                <div class="tool-header">
+                    <div class="tool-logo">G</div>
+                    <div class="tool-info">
+                        <h3>Gen-3 Alpha</h3>
+                        <div class="tool-company">Runway</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Revolutionary text-to-video AI that creates cinematic-quality videos from simple prompts. Features advanced motion control, consistent character generation, and 4K output.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Video Generation</span>
+                    <span class="tool-tag">Creative</span>
+                </div>
+            </div>
+
+            <!-- Tool 6 -->
+            <div class="tool-card tool-6">
+                <div class="tool-header">
+                    <div class="tool-logo">D</div>
+                    <div class="tool-info">
+                        <h3>DataMind Analytics</h3>
+                        <div class="tool-company">DeepMind</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    AI-powered data analysis platform that automatically discovers patterns, generates insights, and creates comprehensive reports. Processes billions of data points instantly.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Data Science</span>
+                    <span class="tool-tag">Analytics</span>
+                </div>
+            </div>
+
+            <!-- Tool 7 -->
+            <div class="tool-card tool-7">
+                <div class="tool-header">
+                    <div class="tool-logo">L</div>
+                    <div class="tool-info">
+                        <h3>Llama Vision Pro</h3>
+                        <div class="tool-company">Meta</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Multimodal AI that understands images, videos, and text simultaneously. Powers real-time object recognition, scene understanding, and visual question answering with unprecedented accuracy.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Computer Vision</span>
+                    <span class="tool-tag">Multimodal</span>
+                </div>
+            </div>
+
+            <!-- Tool 8 -->
+            <div class="tool-card tool-8">
+                <div class="tool-header">
+                    <div class="tool-logo">S</div>
+                    <div class="tool-info">
+                        <h3>Sora Extended</h3>
+                        <div class="tool-company">OpenAI</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Extended version of Sora that generates up to 2-minute videos with perfect temporal consistency. Features advanced physics simulation and realistic character movements.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Video AI</span>
+                    <span class="tool-tag">Generative</span>
+                </div>
+            </div>
+
+            <!-- Tool 9 -->
+            <div class="tool-card tool-9">
+                <div class="tool-header">
+                    <div class="tool-logo">M</div>
+                    <div class="tool-info">
+                        <h3>MusicGen Pro</h3>
+                        <div class="tool-company">Stability AI</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Professional-grade AI music generator that creates full compositions with multiple instruments, vocals, and complex arrangements. Perfect for film scores and production music.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Music AI</span>
+                    <span class="tool-tag">Audio Generation</span>
+                </div>
+            </div>
+
+            <!-- Tool 10 -->
+            <div class="tool-card tool-10">
+                <div class="tool-header">
+                    <div class="tool-logo">G</div>
+                    <div class="tool-info">
+                        <h3>Gemini Ultra 2.0</h3>
+                        <div class="tool-company">Google DeepMind</div>
+                    </div>
+                </div>
+                <div class="tool-description">
+                    Most advanced multimodal AI model with native understanding of text, images, audio, video, and code. Features enhanced reasoning, planning, and real-time collaboration capabilities.
+                </div>
+                <div class="tool-tags">
+                    <span class="tool-tag">Multimodal AI</span>
+                    <span class="tool-tag">Language Model</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create circuit background
+        const circuitBg = document.getElementById('circuitBg');
+        const numLines = 15;
+        
+        for (let i = 0; i < numLines; i++) {
+            // Horizontal lines
+            const hLine = document.createElement('div');
+            hLine.className = 'circuit-line horizontal';
+            hLine.style.top = `${Math.random() * 100}%`;
+            hLine.style.animationDelay = `${Math.random() * 3}s`;
+            hLine.style.animationDuration = `${3 + Math.random() * 4}s`;
+            circuitBg.appendChild(hLine);
+            
+            // Vertical lines
+            const vLine = document.createElement('div');
+            vLine.className = 'circuit-line vertical';
+            vLine.style.left = `${Math.random() * 100}%`;
+            vLine.style.animationDelay = `${Math.random() * 3}s`;
+            vLine.style.animationDuration = `${3 + Math.random() * 4}s`;
+            circuitBg.appendChild(vLine);
+        }
+        
+        // Add circuit nodes at intersections
+        for (let i = 0; i < 20; i++) {
+            const node = document.createElement('div');
+            node.className = 'circuit-node';
+            node.style.left = `${Math.random() * 100}%`;
+            node.style.top = `${Math.random() * 100}%`;
+            node.style.animationDelay = `${Math.random() * 2}s`;
+            circuitBg.appendChild(node);
+        }
+
+        // Smooth comet cursor with proper trail
+        const cometHead = document.querySelector('.comet-head');
+        const cometTail = document.getElementById('cometTail');
+        
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let cometX = mouseX;
+        let cometY = mouseY;
+        
+        const tailSegments = [];
+        const maxSegments = 25;
+        let lastMoveTime = Date.now();
+        let isMoving = false;
+        
+        // Create tail segments
+        for (let i = 0; i < maxSegments; i++) {
+            const segment = document.createElement('div');
+            segment.className = 'tail-segment';
+            cometTail.appendChild(segment);
+            tailSegments.push({
+                element: segment,
+                x: mouseX,
+                y: mouseY,
+                opacity: 0
+            });
+        }
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            lastMoveTime = Date.now();
+            isMoving = true;
+        });
+        
+        function animateComet() {
+            const speed = 0.18;
+            const dx = mouseX - cometX;
+            const dy = mouseY - cometY;
+            
+            cometX += dx * speed;
+            cometY += dy * speed;
+            
+            // Update comet head position
+            cometHead.style.left = cometX + 'px';
+            cometHead.style.top = cometY + 'px';
+            
+            // Calculate velocity for tail direction
+            const velocity = Math.sqrt(dx * dx + dy * dy);
+            const timeSinceMove = Date.now() - lastMoveTime;
+            
+            // Check if mouse is moving
+            if (timeSinceMove > 50) {
+                isMoving = false;
+            }
+            
+            // Update tail segments with smooth following
+            for (let i = 0; i < tailSegments.length; i++) {
+                const segment = tailSegments[i];
+                const prevSegment = i === 0 ? { x: cometX, y: cometY } : tailSegments[i - 1];
+                
+                const segDx = prevSegment.x - segment.x;
+                const segDy = prevSegment.y - segment.y;
+                
+                segment.x += segDx * (0.15 - i * 0.003);
+                segment.y += segDy * (0.15 - i * 0.003);
+                
+                // Calculate opacity based on movement and segment position
+                const maxOpacity = isMoving ? 0.8 : 0.5;
+                const fadeSpeed = isMoving ? 0.1 : 0.03;
+                const targetOpacity = isMoving ? (1 - i / maxSegments) * maxOpacity : 0;
+                
+                segment.opacity += (targetOpacity - segment.opacity) * fadeSpeed;
+                
+                // Size decreases along the tail
+                const size = Math.max(2, 14 - i * 0.5);
+                
+                segment.element.style.left = segment.x + 'px';
+                segment.element.style.top = segment.y + 'px';
+                segment.element.style.width = size + 'px';
+                segment.element.style.height = size + 'px';
+                segment.element.style.opacity = segment.opacity;
+                segment.element.style.transform = `translate(-50%, -50%)`;
+            }
+            
+            requestAnimationFrame(animateComet);
+        }
+        
+        animateComet();
+
+        // Viewport detection for tool cards (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all tool cards
+        document.querySelectorAll('.tool-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Scroll tracking - Add parallax effect to Earth
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const earth = document.querySelector('.earth');
+            const welcomeText = document.querySelector('.welcome-text');
+            
+            // Parallax effect based on scroll
+            const parallaxSpeed = 0.5;
+            earth.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
+            welcomeText.style.transform = `translateY(${scrollY * parallaxSpeed * 0.3}px)`;
+            
+            lastScrollY = scrollY;
+        });
+    </script>
+</body>
+</html>
